@@ -3,13 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome');
-// })->name('home');
-
-Route::get('/', function () {
-    return redirect()->route('posts.index');
-});
+Route::get('/', \App\Http\Controllers\Site\HomeController::class)->name('home');
+Route::get('/about', \App\Http\Controllers\Site\AboutController::class)->name('about');
 
 Route::resource('posts', \App\Http\Controllers\PostController::class);
 
