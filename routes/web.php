@@ -5,8 +5,10 @@ use Inertia\Inertia;
 
 Route::get('/', \App\Http\Controllers\Site\HomeController::class)->name('home');
 Route::get('/about', \App\Http\Controllers\Site\AboutController::class)->name('about');
+Route::get('/contact', \App\Http\Controllers\Site\ContactController::class)->name('contact');
+Route::get('/learn', \App\Http\Controllers\Site\LearnController::class)->name('learn');
 
-Route::resource('posts', \App\Http\Controllers\PostController::class);
+Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
