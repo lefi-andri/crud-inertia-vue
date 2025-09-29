@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Inertia\Inertia;
 use App\Models\Category;
@@ -31,7 +32,7 @@ class PostController extends Controller
                 ];
             });
 
-        return Inertia::render('Posts/Index', [
+        return Inertia::render('Admin/Posts/Index', [
             'posts' => $posts,
             'flash' => [
                 'success' => session('success'),
@@ -44,7 +45,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Posts/Create', [
+        return Inertia::render('Admin/Posts/Create', [
             'categories' => Category::orderBy('name')->get(['id', 'name']),
         ]);
     }
@@ -82,7 +83,7 @@ class PostController extends Controller
     {
         $post->load('category');
 
-        return Inertia::render('Posts/Edit', [
+        return Inertia::render('Admin/Posts/Edit', [
             'post' => [
                 'id'          => $post->id,
                 'title'       => $post->title,
